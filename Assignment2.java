@@ -6,7 +6,9 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.interactions.Actions;
+import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.Select;
+import org.openqa.selenium.support.ui.WebDriverWait;
 
 public class Assignment2 {
 
@@ -55,32 +57,28 @@ public class Assignment2 {
 		Select userole = new Select(userrole);
 		userole.selectByValue("2");
 		driver.findElement(By.cssSelector("#systemUser_employeeName_empName")).sendKeys("Jasmine Morgan");
-		driver.findElement(By.cssSelector("#systemUser_userName")).sendKeys("Selenium504");
+		driver.findElement(By.cssSelector("#systemUser_userName")).sendKeys("Selenium502");
 
 		WebElement status = driver.findElement(By.cssSelector("#systemUser_status"));
 		Select userstatus = new Select(status);
 		userstatus.selectByValue("1");
 
-		driver.findElement(By.cssSelector("#systemUser_password")).sendKeys("Selenium504");
-		driver.findElement(By.cssSelector("#systemUser_confirmPassword")).sendKeys("Selenium504");
+		driver.findElement(By.cssSelector("#systemUser_password")).sendKeys("Selenium502");
+	driver.findElement(By.cssSelector("#systemUser_confirmPassword")).sendKeys("Selenium502");
 		driver.findElement(By.cssSelector("#btnSave")).click();
 
 		Thread.sleep(3000L);
 
 		WebElement search = driver.findElement(By.cssSelector("#searchSystemUser_userName"));
-		search.sendKeys("Selenium503");
+		search.sendKeys("Selenium502");
 		driver.findElement(By.cssSelector("#searchBtn")).click();
-
-		// Locate Table Then Row and Then Delete respected Record.
-
-		WebElement tbl = driver.findElement(By.cssSelector("#resultTable"));
 
 		driver.findElement(By.cssSelector("#ohrmList_chkSelectAll")).click();
 		driver.findElement(By.cssSelector("#btnDelete")).click();
-		Alert alert = driver.switchTo().alert();
-		alert.accept();
+		driver.findElement(By.cssSelector("#deleteConfModal"));
+		driver.findElement(By.cssSelector("#dialogDeleteBtn")).click();
 
-		System.out.println("Record Deleted Successfuly:");
+		System.out.println("Record Deleted Successfully:");
 
 		driver.close();
 	}
