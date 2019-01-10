@@ -1,4 +1,4 @@
-package assignment1;
+package org.assignment;
 
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
@@ -10,7 +10,7 @@ public class Assignment9 {
 
 	public static void main(String[] args) {
 
-		System.setProperty("webdriver.gecko.driver", "C:\\Users\\pratik.jain\\Desktop\\Assignment\\geckodriver.exe");
+		System.setProperty("webdriver.gecko.driver", "Drivers\\geckodriver.exe");
 		WebDriver driver = new FirefoxDriver();
 		driver.get("https://www.facebook.com/");
 		driver.manage().window().maximize();

@@ -1,20 +1,17 @@
-package assignment1;
+package org.assignment;
 
-import org.openqa.selenium.Alert;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.interactions.Actions;
-import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.Select;
-import org.openqa.selenium.support.ui.WebDriverWait;
 
 public class Assignment2 {
 
 	public static void main(String[] args) throws InterruptedException {
 
-		System.setProperty("webdriver.chrome.driver", "C:\\Users\\pratik.jain\\Desktop\\Assignment\\chromedriver.exe");
+		System.setProperty("webdriver.chrome.driver", "Drivers//chromedriver.exe");
 		WebDriver driver = new ChromeDriver();
 		driver.get("https://opensource-demo.orangehrmlive.com/");
 		driver.findElement(By.cssSelector("#txtUsername")).sendKeys("Admin");
@@ -64,7 +61,7 @@ public class Assignment2 {
 		userstatus.selectByValue("1");
 
 		driver.findElement(By.cssSelector("#systemUser_password")).sendKeys("Selenium502");
-	driver.findElement(By.cssSelector("#systemUser_confirmPassword")).sendKeys("Selenium502");
+		driver.findElement(By.cssSelector("#systemUser_confirmPassword")).sendKeys("Selenium502");
 		driver.findElement(By.cssSelector("#btnSave")).click();
 
 		Thread.sleep(3000L);

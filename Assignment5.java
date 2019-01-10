@@ -1,4 +1,4 @@
-package assignment1;
+package org.assignment;
 
 import java.util.Scanner;
 
@@ -14,12 +14,12 @@ public class Assignment5 {
 
 		Scanner scan = new Scanner(System.in);
 		String browserName = scan.nextLine();
+		scan.close();
 
 		if (browserName.equalsIgnoreCase("firefox"))
 
 		{
-			System.setProperty("webdriver.gecko.driver",
-					"C:\\Users\\pratik.jain\\Desktop\\Assignment\\geckodriver.exe");
+			System.setProperty("webdriver.gecko.driver", "Drivers\\geckodriver.exe");
 			WebDriver driver = new FirefoxDriver();
 			driver.get("https://www.facebook.com/");
 			driver.manage().window().maximize();
@@ -36,8 +36,7 @@ public class Assignment5 {
 		}
 
 		else {
-			System.setProperty("webdriver.chrome.driver",
-					"C:\\Users\\pratik.jain\\Desktop\\Assignment\\chromedriver.exe");
+			System.setProperty("webdriver.chrome.driver", "Drivers//chromedriver.exe");
 			WebDriver driver = new ChromeDriver();
 			driver.get("https://www.google.com/");
 			driver.manage().window().maximize();

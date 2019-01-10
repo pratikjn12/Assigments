@@ -1,4 +1,4 @@
-package assignment1;
+package org.assignment;
 
 import java.util.List;
 import java.util.concurrent.TimeUnit;
@@ -14,7 +14,7 @@ public class Assignment3 {
 
 	{
 
-		System.setProperty("webdriver.chrome.driver", "C:\\Users\\pratik.jain\\Desktop\\Assignment\\chromedriver.exe");
+		System.setProperty("webdriver.chrome.driver", "Drivers//chromedriver.exe");
 		WebDriver driver = new ChromeDriver();
 		driver.manage().window().maximize();
 		driver.manage().timeouts().implicitlyWait(15, TimeUnit.SECONDS);
