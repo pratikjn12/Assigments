@@ -1,7 +1,9 @@
 package com.Corpository;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 import java.util.concurrent.TimeUnit;
 
 import org.openqa.selenium.By;
@@ -12,12 +14,16 @@ import org.testng.annotations.AfterTest;
 import org.testng.annotations.BeforeTest;
 import org.testng.annotations.Test;
 
-import com.google.gson.JsonObject;
-
 import io.github.bonigarcia.wdm.WebDriverManager;
 
-public class Compare {
+public class WebTableRead {
 	public WebDriver driver;
+
+	Map<Integer, Map<String, String>> tabledata = new HashMap<Integer, Map<String, String>>();
+	List<String> header = new ArrayList<String>();
+	Map<String, String> tmp = new HashMap<String, String>();
+	int i;
+	
 
 	@BeforeTest
 	public void setup() {
@@ -32,35 +38,36 @@ public class Compare {
 
 	@Test
 	public void webtabledata() {
-		JsonObject row = null;
-		ArrayList <Object> bodyList = new ArrayList<Object>();
-		ArrayList <Object> headerList = new ArrayList <Object>();
 
 		WebElement table = driver.findElement(By.xpath("//table"));
 		List<WebElement> trow = table.findElements(By.tagName("tr"));
-		int i = 0;
 		for (WebElement rowdata : trow) {
-			List<WebElement> tcol = rowdata.findElements(By.tagName("p"));
 
-			if (i == 0) {
-				for (WebElement tcoldata : tcol) {
-					String data = tcoldata.getText();
-					headerList.add(data);
+			List<WebElement> tcol = rowdata.findElements(By.tagName("p"));
+			int j=0;
+			tmp.clear();
+			for (WebElement tcoldata : tcol) {
+				
+				String data = tcoldata.getText();
+
+				if (i == 0) {
+				header.add(data);
+				}else {
+					tmp.put(header.get(j), data);
 				}
-			} else {
-				row = new JsonObject();
-				int headerCol = 0;
-				for (WebElement tcoldata : tcol) {
-					String data = tcoldata.getText();
-					row.addProperty((String) headerList.get(headerCol), data);
-					headerCol++;
-				}
-				bodyList.add(row);
+				
+				j++;
 			}
+			System.out.println("=================="+tmp);
+			if (i != 0)
+				tabledata.put(i, tmp);
+			//System.out.println("============"+tabledata.get(i));
 			i++;
+			
+			
 		}
 
-		System.out.println(bodyList);	
+		//System.out.println("");
 	}
 
 	@AfterTest
